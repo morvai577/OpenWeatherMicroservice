@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace MicroserviceApi
 {
-    class WeatherClient
+    public class WeatherClient
     {
         private readonly HttpClient _httpClient;
         private readonly ServiceSettings _settings;
