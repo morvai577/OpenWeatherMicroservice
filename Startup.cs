@@ -26,6 +26,7 @@ namespace MicroserviceApi
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.Configure<ServiceSettings>(Configuration.GetSection(nameof(ServiceSettings)));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
