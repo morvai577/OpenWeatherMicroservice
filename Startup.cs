@@ -39,7 +39,8 @@ namespace MicroserviceApi
                                                                                                                                                         //TODO: Lookup up Polly (used in above line)
                 .AddTransientHttpErrorPolicy(builder => builder.CircuitBreakerAsync(3, TimeSpan.FromSeconds(10))); // Architecture pattern for making microservice resillient
 
-            services.AddHealthChecks();
+            services.AddHealthChecks()
+                    .AddCheck<ExternalEndpointHealthCheck>("OpenWeather"); // One health check for each service you require e.g. API, Database
 
         }
 
