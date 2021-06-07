@@ -35,7 +35,7 @@ namespace MicroserviceApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MicroserviceApi", Version = "v1" });
             });
             services.AddHttpClient<WeatherClient>()
-                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(10, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)))) // Used to handle scenarios where microservice is down
+                .AddTransientHttpErrorPolicy(builder => builder.WaitAndRetryAsync(10, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)))) // Used to handle scenarios when microservice is down
                                                                                                                                                         //TODO: Lookup up Polly (used in above line)
                 .AddTransientHttpErrorPolicy(builder => builder.CircuitBreakerAsync(3, TimeSpan.FromSeconds(10))); // Architecture pattern for making microservice resillient
 
